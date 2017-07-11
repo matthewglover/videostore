@@ -17,43 +17,44 @@ public class Customer {
         double totalAmount = 0;
         int frequentRenterPoints = 0;
         Enumeration rentals = this.rentals.elements();
-        String result = "Rental Record for " + name + "\n";
+
+        String statement = "Rental Record for " + name + "\n";
 
         while (rentals.hasMoreElements()) {
-            double thisAmount = 0;
-            Rental each = (Rental) rentals.nextElement();
+            double rentalAmount = 0;
+            Rental rental = (Rental) rentals.nextElement();
 
-            // determines the amount for each line
-            switch (each.getMovie().getPriceCode()) {
+            switch (rental.getMovie().getPriceCode()) {
                 case Movie.REGULAR:
-                    thisAmount += 2;
-                    if (each.getDaysRented() > 2) {
-                        thisAmount += (each.getDaysRented() - 2) * 1.5;
+                    rentalAmount += 2;
+                    if (rental.getDaysRented() > 2) {
+                        rentalAmount += (rental.getDaysRented() - 2) * 1.5;
                     }
                     break;
                 case Movie.NEW_RELEASE:
-                    thisAmount += each.getDaysRented() * 3;
+                    rentalAmount += rental.getDaysRented() * 3;
                     break;
                 case Movie.CHILDRENS:
-                    thisAmount += 1.5;
-                    if (each.getDaysRented() > 3) {
-                        thisAmount += (each.getDaysRented() - 3) * 1.5;
+                    rentalAmount += 1.5;
+                    if (rental.getDaysRented() > 3) {
+                        rentalAmount += (rental.getDaysRented() - 3) * 1.5;
                     }
                     break;
             }
 
             frequentRenterPoints++;
 
-            if (each.getMovie().getPriceCode() == Movie.NEW_RELEASE && each.getDaysRented() > 1)
+            if (rental.getMovie().getPriceCode() == Movie.NEW_RELEASE && rental.getDaysRented() > 1) {
                 frequentRenterPoints++;
+            }
 
-            result += "\t" + each.getMovie().getTitle() + "\t" + String.valueOf(thisAmount) + "\n";
-            totalAmount += thisAmount;
+            statement += "\t" + rental.getMovie().getTitle() + "\t" + rentalAmount + "\n";
+            totalAmount += rentalAmount;
         }
 
-        result += "You owed " + String.valueOf(totalAmount) + "\n";
-        result += "You earned " + String.valueOf(frequentRenterPoints) + " frequent renter points\n";
+        statement += "You owed " + totalAmount + "\n";
+        statement += "You earned " + frequentRenterPoints + " frequent renter points\n";
 
-        return result;
+        return statement;
     }
 }
