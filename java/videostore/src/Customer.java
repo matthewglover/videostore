@@ -4,6 +4,8 @@ import java.util.List;
 public class Customer {
     private String name;
     private List<Rental> rentals = new ArrayList<>();
+    private double totalAmount;
+    private int frequentRenterPoints;
 
     public Customer(String name) {
         this.name = name;
@@ -13,9 +15,17 @@ public class Customer {
         rentals.add(rental);
     }
 
+    public double totalAmount() {
+        return totalAmount;
+    }
+
+    public int frequentRenterPoints() {
+        return frequentRenterPoints;
+    }
+
     public String statement() {
-        double totalAmount = 0;
-        int frequentRenterPoints = 0;
+        totalAmount = 0;
+        frequentRenterPoints = 0;
 
         String statement = "Rental Record for " + name + "\n";
 

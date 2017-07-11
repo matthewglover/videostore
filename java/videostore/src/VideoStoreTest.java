@@ -25,6 +25,13 @@ public class VideoStoreTest extends TestCase {
         regular3 = new Movie("Regular", Movie.REGULAR);
     }
 
+    public void testTotalsForNewRelease() {
+        customer.addRental(new Rental(newRelease1, 3));
+        customer.statement();
+        assertEquals(9.0, customer.totalAmount());
+        assertEquals(2, customer.frequentRenterPoints());
+    }
+
     public void testSingleNewReleaseStatement() {
         customer.addRental(new Rental(newRelease1, 3));
         assertEquals(
