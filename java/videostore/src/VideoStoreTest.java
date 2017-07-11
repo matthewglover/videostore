@@ -2,11 +2,13 @@ import junit.framework.*;
 
 public class VideoStoreTest extends TestCase {
 
+    private Customer customer;
     private Movie newRelease1;
     private Movie newRelease2;
     private Movie childrens;
     private Movie regular1;
     private Movie regular2;
+
     private Movie regular3;
 
     public VideoStoreTest(String name) {
@@ -69,6 +71,4 @@ public class VideoStoreTest extends TestCase {
                 "You earned 3 frequent renter points\n",
                 customer.statement());
     }
-
-    private Customer customer;
 }
