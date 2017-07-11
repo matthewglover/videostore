@@ -25,6 +25,31 @@ public class VideoStoreTest extends TestCase {
         regular3 = new Movie("Regular", Movie.REGULAR);
     }
 
+    public void testNewReleaseRentalTotal() {
+        NewReleaseRental rental = new NewReleaseRental(newRelease1, 1);
+        assertEquals(3.0, rental.getTotal());
+    }
+
+    public void testChildrensRentalTotalOfThreeDays() {
+        ChildrensRental rental = new ChildrensRental(childrens, 3);
+        assertEquals(1.5, rental.getTotal());
+    }
+
+    public void testChildrensRentalTotalOfMoreThanThreeDays() throws Exception {
+        ChildrensRental rental = new ChildrensRental(childrens, 9);
+        assertEquals(10.5, rental.getTotal());
+    }
+
+    public void testRegularRentalTotalOfTwoDays() throws Exception {
+        RegularRental rental = new RegularRental(regular1, 2);
+        assertEquals(2.0, rental.getTotal());
+    }
+
+    public void testRegularRentalTotalOfMoreThanTwoDays() {
+        RegularRental rental = new RegularRental(regular1, 4);
+        assertEquals(5.0, rental.getTotal());
+    }
+
     public void testTotalsForNewRelease() {
         customer.addRental(new Rental(newRelease1, 3));
         customer.statement();
