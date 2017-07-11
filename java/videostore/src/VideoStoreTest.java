@@ -35,7 +35,7 @@ public class VideoStoreTest extends TestCase {
                 customer.statement());
     }
 
-    public void testDualNewReleaseStatement() {
+    public void testMultipleNewReleasesStatement() {
         customer.addRental(new Rental(newRelease1, 3));
         customer.addRental(new Rental(newRelease2, 3));
         assertEquals(
@@ -57,7 +57,7 @@ public class VideoStoreTest extends TestCase {
                 customer.statement());
     }
 
-    public void testMultipleRegularStatement() {
+    public void testMultipleRegularsStatement() {
         customer.addRental(new Rental(regular1, 1));
         customer.addRental(new Rental(regular2, 2));
         customer.addRental(new Rental(regular3, 3));
