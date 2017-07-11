@@ -1,28 +1,27 @@
-import java.util.Vector;
-import java.util.Enumeration;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Customer {
     private String name;
-    private Vector rentals = new Vector();
+    private List<Rental> rentals = new ArrayList<>();
 
     public Customer(String name) {
         this.name = name;
     }
 
     public void addRental(Rental rental) {
-        rentals.addElement(rental);
+        rentals.add(rental);
     }
 
     public String statement() {
         double totalAmount = 0;
         int frequentRenterPoints = 0;
-        Enumeration rentals = this.rentals.elements();
 
         String statement = "Rental Record for " + name + "\n";
 
-        while (rentals.hasMoreElements()) {
+        for (Rental rental : rentals) {
+
             double rentalAmount = 0;
-            Rental rental = (Rental) rentals.nextElement();
 
             switch (rental.getMovie().getPriceCode()) {
                 case Movie.REGULAR:
