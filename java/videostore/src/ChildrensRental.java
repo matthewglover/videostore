@@ -12,6 +12,6 @@ public class ChildrensRental extends Rental {
     }
 
     private double getExtraDaysSupplement() {
-        return (getDaysRented() - 3) * 1.5;
+        return getDaysRented() > 3 ? (getDaysRented() - 3) * 1.5 : 0;
     }
 }
