@@ -4,7 +4,6 @@ import java.util.List;
 public class Customer {
     private String name;
     private List<Rental> rentals = new ArrayList<>();
-    private int frequentRenterPoints;
 
     public Customer(String name) {
         this.name = name;
@@ -23,22 +22,22 @@ public class Customer {
     }
 
     public int frequentRenterPoints() {
-        return frequentRenterPoints;
+        return rentals
+                .stream()
+                .map(Rental::getFrequentRenterPoints)
+                .mapToInt(Integer::intValue)
+                .sum();
     }
 
     public String statement() {
-        frequentRenterPoints = 0;
-
         String statement = "Rental Record for " + name + "\n";
 
         for (Rental rental : rentals) {
-            frequentRenterPoints += rental.getFrequentRenterPoints();
-
             statement += rental.getStatement();
         }
 
         statement += "You owed " + totalAmount() + "\n";
-        statement += "You earned " + frequentRenterPoints + " frequent renter points\n";
+        statement += "You earned " + frequentRenterPoints() + " frequent renter points\n";
 
         return statement;
     }
