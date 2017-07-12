@@ -11,6 +11,6 @@ public class RegularRental extends Rental {
     }
 
     private double getExtraDaysSupplement() {
-        return (getDaysRented() - 2) * 1.5;
+        return getDaysRented() > 2 ? (getDaysRented() - 2) * 1.5 : 0;
     }
 }

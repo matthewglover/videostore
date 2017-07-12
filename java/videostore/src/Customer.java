@@ -36,10 +36,7 @@ public class Customer {
 
             switch (rental.getMovie().getPriceCode()) {
                 case Movie.REGULAR:
-                    rentalAmount += 2;
-                    if (rental.getDaysRented() > 2) {
-                        rentalAmount += (rental.getDaysRented() - 2) * 1.5;
-                    }
+                    rentalAmount += rental.getTotal();
                     break;
                 case Movie.NEW_RELEASE:
                     rentalAmount += rental.getDaysRented() * 3;
