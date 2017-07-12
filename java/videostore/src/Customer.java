@@ -30,13 +30,10 @@ public class Customer {
         String statement = "Rental Record for " + name + "\n";
 
         for (Rental rental : rentals) {
-
-            double rentalAmount = rental.getTotal();
-
             frequentRenterPoints += rental.getFrequentRenterPoints();
 
-            statement += "\t" + rental.getMovie().getTitle() + "\t" + rentalAmount + "\n";
-            totalAmount += rentalAmount;
+            statement += rental.getStatement();
+            totalAmount += rental.getTotal();
         }
 
         statement += "You owed " + totalAmount + "\n";

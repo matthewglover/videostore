@@ -19,5 +19,9 @@ public abstract class Rental {
         return 1;
     }
 
+    public String getStatement() {
+        return "\t" + getMovie().getTitle() + "\t" + getTotal() + "\n";
+    }
+
     abstract double getTotal();
 }
