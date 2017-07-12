@@ -15,5 +15,9 @@ public abstract class Rental {
         return movie;
     }
 
+    public int getFrequentRenterPoints() {
+        return 1;
+    }
+
     abstract double getTotal();
 }

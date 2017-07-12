@@ -33,7 +33,7 @@ public class Customer {
 
             double rentalAmount = rental.getTotal();
 
-            frequentRenterPoints++;
+            frequentRenterPoints += rental.getFrequentRenterPoints();
 
             if (rental.getMovie().getPriceCode() == Movie.NEW_RELEASE && rental.getDaysRented() > 1) {
                 frequentRenterPoints++;
