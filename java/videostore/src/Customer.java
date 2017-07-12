@@ -34,17 +34,7 @@ public class Customer {
 
             double rentalAmount = 0;
 
-            switch (rental.getMovie().getPriceCode()) {
-                case Movie.REGULAR:
-                    rentalAmount += rental.getTotal();
-                    break;
-                case Movie.NEW_RELEASE:
-                    rentalAmount += rental.getTotal();
-                    break;
-                case Movie.CHILDRENS:
-                    rentalAmount += rental.getTotal();
-                    break;
-            }
+            rentalAmount += rental.getTotal();
 
             frequentRenterPoints++;
 
