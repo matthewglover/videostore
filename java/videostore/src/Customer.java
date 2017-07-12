@@ -39,7 +39,7 @@ public class Customer {
                     rentalAmount += rental.getTotal();
                     break;
                 case Movie.NEW_RELEASE:
-                    rentalAmount += rental.getDaysRented() * 3;
+                    rentalAmount += rental.getTotal();
                     break;
                 case Movie.CHILDRENS:
                     rentalAmount += 1.5;
