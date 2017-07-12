@@ -1,4 +1,4 @@
-public class NewReleaseRental extends AbstractRental {
+public class NewReleaseRental extends Rental {
     public NewReleaseRental(Movie movie, int daysRented) {
         super(movie, daysRented);
     }

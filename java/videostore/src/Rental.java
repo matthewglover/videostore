@@ -1,4 +1,4 @@
-public class Rental {
+public abstract class Rental {
     private Movie movie;
     private int daysRented;
 
@@ -14,4 +14,6 @@ public class Rental {
     public Movie getMovie() {
         return movie;
     }
+
+    abstract double getTotal();
 }

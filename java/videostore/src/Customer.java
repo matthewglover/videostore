@@ -6,6 +6,7 @@ public class Customer {
     private List<Rental> rentals = new ArrayList<>();
     private double totalAmount;
     private int frequentRenterPoints;
+    private String statement;
 
     public Customer(String name) {
         this.name = name;

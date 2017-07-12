@@ -1,4 +1,4 @@
-public class ChildrensRental extends AbstractRental {
+public class ChildrensRental extends Rental {
 
     private static final double baseTotal = 1.5;
 

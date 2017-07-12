@@ -1,4 +1,4 @@
-public class RegularRental extends AbstractRental {
+public class RegularRental extends Rental {
     private static final double baseTotal = 2;
 
     public RegularRental(Movie movie, int daysRented) {

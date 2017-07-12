@@ -51,14 +51,14 @@ public class VideoStoreTest extends TestCase {
     }
 
     public void testTotalsForNewRelease() {
-        customer.addRental(new Rental(newRelease1, 3));
+        customer.addRental(new NewReleaseRental(newRelease1, 3));
         customer.statement();
         assertEquals(9.0, customer.totalAmount());
         assertEquals(2, customer.frequentRenterPoints());
     }
 
     public void testSingleNewReleaseStatement() {
-        customer.addRental(new Rental(newRelease1, 3));
+        customer.addRental(new NewReleaseRental(newRelease1, 3));
         assertEquals(
                 "Rental Record for Fred\n" +
                         "\tNew Release\t9.0\n" +
@@ -68,8 +68,8 @@ public class VideoStoreTest extends TestCase {
     }
 
     public void testMultipleNewReleasesStatement() {
-        customer.addRental(new Rental(newRelease1, 3));
-        customer.addRental(new Rental(newRelease2, 3));
+        customer.addRental(new NewReleaseRental(newRelease1, 3));
+        customer.addRental(new NewReleaseRental(newRelease2, 3));
         assertEquals(
                 "Rental Record for Fred\n" +
                         "\tNew Release\t9.0\n" +
@@ -80,7 +80,7 @@ public class VideoStoreTest extends TestCase {
     }
 
     public void testSingleChildrensStatement() {
-        customer.addRental(new Rental(childrens, 3));
+        customer.addRental(new ChildrensRental(childrens, 3));
         assertEquals(
                 "Rental Record for Fred\n" +
                         "\tChildrens\t1.5\n" +
@@ -90,9 +90,9 @@ public class VideoStoreTest extends TestCase {
     }
 
     public void testMultipleRegularsStatement() {
-        customer.addRental(new Rental(regular1, 1));
-        customer.addRental(new Rental(regular2, 2));
-        customer.addRental(new Rental(regular3, 3));
+        customer.addRental(new RegularRental(regular1, 1));
+        customer.addRental(new RegularRental(regular2, 2));
+        customer.addRental(new RegularRental(regular3, 3));
 
         assertEquals(
                 "Rental Record for Fred\n" +
