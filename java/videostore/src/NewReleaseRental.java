@@ -6,4 +6,13 @@ public class NewReleaseRental extends Rental {
     double getTotal() {
         return getDaysRented() * 3;
     }
+
+    @Override
+    public int getFrequentRenterPoints() {
+        return super.getFrequentRenterPoints() + getRenterPointSupplement();
+    }
+
+    private int getRenterPointSupplement() {
+        return getDaysRented() > 1 ? 1 : 0;
+    }
 }

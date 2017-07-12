@@ -35,10 +35,6 @@ public class Customer {
 
             frequentRenterPoints += rental.getFrequentRenterPoints();
 
-            if (rental.getMovie().getPriceCode() == Movie.NEW_RELEASE && rental.getDaysRented() > 1) {
-                frequentRenterPoints++;
-            }
-
             statement += "\t" + rental.getMovie().getTitle() + "\t" + rentalAmount + "\n";
             totalAmount += rentalAmount;
         }
