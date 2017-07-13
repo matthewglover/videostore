@@ -20,4 +20,13 @@ public abstract class Movie {
     }
 
     public abstract double getRentalAmount(Rental rental);
+
+    int getFrequentRenterPoints(Rental rental) {
+        int frequentRenterPoints = 1;
+
+        if (rental.getMovie().getPriceCode() == NEW_RELEASE && rental.getDaysRented() > 1) {
+            frequentRenterPoints++;
+        }
+        return frequentRenterPoints;
+    }
 }
