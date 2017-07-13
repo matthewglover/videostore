@@ -1,6 +1,6 @@
 public class Childrens extends Movie {
     public Childrens(String title, int priceCode) {
-        super(title, priceCode);
+        super(title);
     }
 
     public double getRentalAmount(Rental rental) {
