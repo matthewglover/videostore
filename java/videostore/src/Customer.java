@@ -33,11 +33,7 @@ public class Customer {
 
             double rentalAmount = rental.movie.getRentalAmount(rental);
 
-            frequentRenterPoints++;
-
-            if (rental.getMovie().getPriceCode() == Movie.NEW_RELEASE && rental.getDaysRented() > 1) {
-                frequentRenterPoints++;
-            }
+            frequentRenterPoints += getFrequentRenterPoints(rental);
 
             statement += "\t" + rental.getMovie().getTitle() + "\t" + rentalAmount + "\n";
             totalAmount += rentalAmount;
@@ -47,6 +43,15 @@ public class Customer {
         statement += "You earned " + frequentRenterPoints + " frequent renter points\n";
 
         return statement;
+    }
+
+    private int getFrequentRenterPoints(Rental rental) {
+        int frequentRenterPoints = 1;
+
+        if (rental.getMovie().getPriceCode() == Movie.NEW_RELEASE && rental.getDaysRented() > 1) {
+            frequentRenterPoints++;
+        }
+        return frequentRenterPoints;
     }
 
 }
