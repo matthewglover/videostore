@@ -4,9 +4,6 @@ public class NewRelease extends Movie {
     }
 
     public double getRentalAmount(Rental rental) {
-        double rentalAmount = 0;
-
-        rentalAmount += rental.getDaysRented() * 3;
-        return rentalAmount;
+        return (double) (rental.getDaysRented() * 3);
     }
 }

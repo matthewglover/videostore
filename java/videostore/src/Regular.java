@@ -4,8 +4,7 @@ public class Regular extends Movie {
     }
 
     public double getRentalAmount(Rental rental) {
-        double rentalAmount = 0;
-        rentalAmount += 2;
+        double rentalAmount = 2;
         if (rental.getDaysRented() > 2) {
             rentalAmount += (rental.getDaysRented() - 2) * 1.5;
         }
