@@ -19,7 +19,7 @@ public class Movie {
         return priceCode;
     }
 
-    double getRentalAmount(Rental rental) {
+    public double getRentalAmount(Rental rental) {
         double rentalAmount = 0;
 
         switch (rental.getMovie().getPriceCode()) {
