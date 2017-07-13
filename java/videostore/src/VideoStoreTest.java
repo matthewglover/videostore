@@ -21,8 +21,8 @@ public class VideoStoreTest extends TestCase {
         newRelease2 = new NewRelease("New Release 2", Movie.NEW_RELEASE);
         childrens = new Childrens("Childrens", Movie.CHILDRENS);
         regular1 = new Regular("Regular 1", Movie.REGULAR);
-        regular2 = new Movie("Regular 2", Movie.REGULAR);
-        regular3 = new Movie("Regular", Movie.REGULAR);
+        regular2 = new Regular("Regular 2", Movie.REGULAR);
+        regular3 = new Regular("Regular", Movie.REGULAR);
     }
 
     public void testTotalsForNewRelease() {

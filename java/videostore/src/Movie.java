@@ -1,4 +1,4 @@
-public class Movie {
+public abstract class Movie {
     public static final int REGULAR = 0;
     public static final int NEW_RELEASE = 1;
     public static final int CHILDRENS = 2;
@@ -19,26 +19,5 @@ public class Movie {
         return priceCode;
     }
 
-    public double getRentalAmount(Rental rental) {
-        double rentalAmount = 0;
-
-        switch (rental.getMovie().getPriceCode()) {
-            case REGULAR:
-                rentalAmount += 2;
-                if (rental.getDaysRented() > 2) {
-                    rentalAmount += (rental.getDaysRented() - 2) * 1.5;
-                }
-                break;
-            case NEW_RELEASE:
-                rentalAmount += rental.getDaysRented() * 3;
-                break;
-            case CHILDRENS:
-                rentalAmount += 1.5;
-                if (rental.getDaysRented() > 3) {
-                    rentalAmount += (rental.getDaysRented() - 3) * 1.5;
-                }
-                break;
-        }
-        return rentalAmount;
-    }
+    public abstract double getRentalAmount(Rental rental);
 }
