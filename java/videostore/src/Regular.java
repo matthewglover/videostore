@@ -12,11 +12,6 @@ public class Regular extends Movie {
     }
 
     public int getFrequentRenterPoints(Rental rental) {
-        int frequentRenterPoints = 1;
-
-        if (rental.getMovie().getPriceCode() == NEW_RELEASE && rental.getDaysRented() > 1) {
-            frequentRenterPoints++;
-        }
-        return frequentRenterPoints;
+        return 1;
     }
 }
