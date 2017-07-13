@@ -17,10 +17,10 @@ public class VideoStoreTest extends TestCase {
 
     protected void setUp() {
         customer = new Customer("Fred");
-        newRelease1 = new Movie("New Release", Movie.NEW_RELEASE);
-        newRelease2 = new Movie("New Release 2", Movie.NEW_RELEASE);
-        childrens = new Movie("Childrens", Movie.CHILDRENS);
-        regular1 = new Movie("Regular 1", Movie.REGULAR);
+        newRelease1 = new NewRelease("New Release", Movie.NEW_RELEASE);
+        newRelease2 = new NewRelease("New Release 2", Movie.NEW_RELEASE);
+        childrens = new Childrens("Childrens", Movie.CHILDRENS);
+        regular1 = new Regular("Regular 1", Movie.REGULAR);
         regular2 = new Movie("Regular 2", Movie.REGULAR);
         regular3 = new Movie("Regular", Movie.REGULAR);
     }
