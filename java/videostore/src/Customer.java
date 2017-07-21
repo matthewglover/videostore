@@ -24,7 +24,7 @@ public class Customer {
         String result = "Rental Record for " + getName() + "\n";
 
         for (Rental rental : rentals) {
-            double rentalAmount = getRentalAmount(rental);
+            double rentalAmount = rental.getRentalAmount();
 
             totalFrequentRenterPoints += rental.getFrequentRenterPoints();
 
@@ -39,22 +39,6 @@ public class Customer {
 
 
         return result;
-    }
-
-    private double getRentalAmount(Rental rental) {
-        double rentalAmount = 0;
-        switch (rental.getMovie().getPriceCode()) {
-            case Movie.REGULAR:
-                rentalAmount = rental.getRegularRentalAmount();
-                break;
-            case Movie.NEW_RELEASE:
-                rentalAmount = rental.getNewReleaseRentalAmount();
-                break;
-            case Movie.CHILDRENS:
-                rentalAmount = rental.getChildrensRentalAmount();
-                break;
-        }
-        return rentalAmount;
     }
 
 }

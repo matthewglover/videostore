@@ -45,4 +45,20 @@ public class Rental {
             rentalAmount += (getDaysRented() - 2) * 1.5;
         return rentalAmount;
     }
+
+    double getRentalAmount() {
+        double rentalAmount = 0;
+        switch (getMovie().getPriceCode()) {
+            case Movie.REGULAR:
+                rentalAmount = getRegularRentalAmount();
+                break;
+            case Movie.NEW_RELEASE:
+                rentalAmount = getNewReleaseRentalAmount();
+                break;
+            case Movie.CHILDRENS:
+                rentalAmount = getChildrensRentalAmount();
+                break;
+        }
+        return rentalAmount;
+    }
 }
