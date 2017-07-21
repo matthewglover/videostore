@@ -20,7 +20,7 @@ public class Customer {
 
     public String statement() {
         double totalAmount = 0;
-        int frequentRenterPoints = 0;
+        int totalFrequentRenterPoints = 0;
         String result = "Rental Record for " + getName() + "\n";
 
         for (Rental rental : rentals) {
@@ -38,11 +38,7 @@ public class Customer {
                     break;
             }
 
-            frequentRenterPoints++;
-
-            if (rental.getMovie().getPriceCode() == Movie.NEW_RELEASE
-                    && rental.getDaysRented() > 1)
-                frequentRenterPoints++;
+            totalFrequentRenterPoints += getFrequentRenterPoints(rental);
 
             result += "\t" + rental.getMovie().getTitle() + "\t"
                     + String.valueOf(rentalAmount) + "\n";
@@ -51,10 +47,18 @@ public class Customer {
         }
 
         result += "You owed " + String.valueOf(totalAmount) + "\n";
-        result += "You earned " + String.valueOf(frequentRenterPoints) + " frequent renter points\n";
+        result += "You earned " + String.valueOf(totalFrequentRenterPoints) + " frequent renter points\n";
 
 
         return result;
+    }
+
+    private int getFrequentRenterPoints(Rental rental) {
+        int frequentRenterPoints = 1;
+
+        if (isBonusFrequentRenterPoints(rental))
+            frequentRenterPoints++;
+        return frequentRenterPoints;
     }
 
     private double getChildrensRentalAmount(Rental rental) {
@@ -73,5 +77,10 @@ public class Customer {
         if (rental.getDaysRented() > 2)
             rentalAmount += (rental.getDaysRented() - 2) * 1.5;
         return rentalAmount;
+    }
+
+    private boolean isBonusFrequentRenterPoints(Rental rental) {
+        return rental.getMovie().getPriceCode() == Movie.NEW_RELEASE
+                && rental.getDaysRented() > 1;
     }
 }
