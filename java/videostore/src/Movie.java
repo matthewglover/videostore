@@ -10,11 +10,13 @@ public abstract class Movie {
         this.title = title;
     }
 
-    public int getPriceCode() {
+    public int priceCode() {
         return priceCode;
     }
 
-    public String getTitle() {
+    public String title() {
         return title;
     }
+
+    abstract double price(int daysRented);
 }
