@@ -38,7 +38,7 @@ public class Customer {
                     break;
             }
 
-            totalFrequentRenterPoints += getFrequentRenterPoints(rental);
+            totalFrequentRenterPoints += rental.getFrequentRenterPoints();
 
             result += "\t" + rental.getMovie().getTitle() + "\t"
                     + rentalAmount + "\n";
@@ -51,14 +51,6 @@ public class Customer {
 
 
         return result;
-    }
-
-    private int getFrequentRenterPoints(Rental rental) {
-        int frequentRenterPoints = 1;
-
-        if (isBonusFrequentRenterPoints(rental))
-            frequentRenterPoints++;
-        return frequentRenterPoints;
     }
 
     private double getChildrensRentalAmount(Rental rental) {
@@ -79,8 +71,4 @@ public class Customer {
         return rentalAmount;
     }
 
-    private boolean isBonusFrequentRenterPoints(Rental rental) {
-        return rental.getMovie().getPriceCode() == Movie.NEW_RELEASE
-                && rental.getDaysRented() > 1;
-    }
 }
