@@ -15,7 +15,7 @@ public class Rental {
         return movie;
     }
 
-    public int getFrequentRenterPoints() {
+    public int getPoints() {
         int frequentRenterPoints = 1;
 
         if (isBonusFrequentRenterPoints())
@@ -23,25 +23,25 @@ public class Rental {
         return frequentRenterPoints;
     }
 
-    public double getTotal() {
-        double rentalAmount = 0;
+    public double getPrice() {
+        double cost = 0;
         switch (getMovie().getPriceCode()) {
             case Movie.REGULAR:
-                rentalAmount = getRegularRentalAmount();
+                cost = getRegularRentalAmount();
                 break;
             case Movie.NEW_RELEASE:
-                rentalAmount = getNewReleaseRentalAmount();
+                cost = getNewReleaseRentalAmount();
                 break;
             case Movie.CHILDRENS:
-                rentalAmount = getChildrensRentalAmount();
+                cost = getChildrensRentalAmount();
                 break;
         }
-        return rentalAmount;
+        return cost;
     }
 
-    public String getRentalStatement() {
+    public String getStatement() {
         return "\t" + getMovie().getTitle() + "\t"
-                + getTotal() + "\n";
+                + getPrice() + "\n";
     }
 
     private boolean isBonusFrequentRenterPoints() {
