@@ -16,12 +16,12 @@ public class VideoStoreTest extends TestCase
 
 	protected void setUp ()  {
 		customer = new Customer ("Fred");
-		newRelease1 = new Movie("The Cell", Movie.NEW_RELEASE);
-		newRelease2 = new Movie("The Tigger Movie", Movie.NEW_RELEASE);
-		childrens = new Movie("The Tigger Movie", Movie.CHILDRENS);
-		regular1 = new Movie("Plan 9 from Outer Space", Movie.REGULAR);
-		regular2 = new Movie("8 1/2", Movie.REGULAR);
-		regular3 = new Movie("Eraserhead", Movie.REGULAR);
+		newRelease1 = new NewRelease("The Cell", Movie.NEW_RELEASE);
+		newRelease2 = new NewRelease("The Tigger Movie", Movie.NEW_RELEASE);
+		childrens = new ChildrensMovie("The Tigger Movie", Movie.CHILDRENS);
+		regular1 = new RegularMovie("Plan 9 from Outer Space", Movie.REGULAR);
+		regular2 = new RegularMovie("8 1/2", Movie.REGULAR);
+		regular3 = new RegularMovie("Eraserhead", Movie.REGULAR);
 	}
 
 	public void testSingleNewReleaseStatement () {
