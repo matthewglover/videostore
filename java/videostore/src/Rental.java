@@ -23,30 +23,7 @@ public class Rental {
         return frequentRenterPoints;
     }
 
-    private boolean isBonusFrequentRenterPoints() {
-        return getMovie().getPriceCode() == Movie.NEW_RELEASE
-                && getDaysRented() > 1;
-    }
-
-    double getChildrensRentalAmount() {
-        double rentalAmount = 1.5;
-        if (getDaysRented() > 3)
-            rentalAmount += (getDaysRented() - 3) * 1.5;
-        return rentalAmount;
-    }
-
-    double getNewReleaseRentalAmount() {
-        return getDaysRented() * 3;
-    }
-
-    double getRegularRentalAmount() {
-        double rentalAmount = 2;
-        if (getDaysRented() > 2)
-            rentalAmount += (getDaysRented() - 2) * 1.5;
-        return rentalAmount;
-    }
-
-    double getTotal() {
+    public double getTotal() {
         double rentalAmount = 0;
         switch (getMovie().getPriceCode()) {
             case Movie.REGULAR:
@@ -59,6 +36,34 @@ public class Rental {
                 rentalAmount = getChildrensRentalAmount();
                 break;
         }
+        return rentalAmount;
+    }
+
+    public String getRentalStatement() {
+        return "\t" + getMovie().getTitle() + "\t"
+                + getTotal() + "\n";
+    }
+
+    private boolean isBonusFrequentRenterPoints() {
+        return getMovie().getPriceCode() == Movie.NEW_RELEASE
+                && getDaysRented() > 1;
+    }
+
+    private double getChildrensRentalAmount() {
+        double rentalAmount = 1.5;
+        if (getDaysRented() > 3)
+            rentalAmount += (getDaysRented() - 3) * 1.5;
+        return rentalAmount;
+    }
+
+    private double getNewReleaseRentalAmount() {
+        return getDaysRented() * 3;
+    }
+
+    private double getRegularRentalAmount() {
+        double rentalAmount = 2;
+        if (getDaysRented() > 2)
+            rentalAmount += (getDaysRented() - 2) * 1.5;
         return rentalAmount;
     }
 }

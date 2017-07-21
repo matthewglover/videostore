@@ -2,8 +2,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Customer {
-    private String name;
-    private List<Rental> rentals = new ArrayList<>();
+    private final String name;
+    private final List<Rental> rentals = new ArrayList<>();
 
     public Customer(String name) {
         this.name = name;
@@ -13,24 +13,15 @@ public class Customer {
         rentals.add(rental);
     }
 
-    public String getName() {
-        return name;
-    }
-
-
     public String statement() {
         double totalAmount = 0;
         int totalFrequentRenterPoints = 0;
-        String result = "Rental Record for " + getName() + "\n";
+        String result = "Rental Record for " + name + "\n";
 
         for (Rental rental : rentals) {
-            double rentalAmount = rental.getTotal();
-
             totalFrequentRenterPoints += rental.getFrequentRenterPoints();
-
-            result += "\t" + rental.getMovie().getTitle() + "\t"
-                    + rentalAmount + "\n";
-            totalAmount += rentalAmount;
+            result += rental.getRentalStatement();
+            totalAmount += rental.getTotal();
 
         }
 
