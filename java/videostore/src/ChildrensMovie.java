@@ -4,10 +4,11 @@ public class ChildrensMovie extends Movie {
     }
 
     @Override
-    double price(int daysRented) {
+    public double price(int daysRented) {
         double rentalAmount = 1.5;
-        if (daysRented > 3)
+        if (daysRented > 3) {
             rentalAmount += (daysRented - 3) * 1.5;
+        }
         return rentalAmount;
     }
 }

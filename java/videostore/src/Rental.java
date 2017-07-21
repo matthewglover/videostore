@@ -8,11 +8,7 @@ public class Rental {
     }
 
     public int points() {
-        int frequentRenterPoints = 1;
-
-        if (isBonusFrequentRenterPoints())
-            frequentRenterPoints++;
-        return frequentRenterPoints;
+        return movie.points(daysRented);
     }
 
     public double price() {
@@ -21,10 +17,5 @@ public class Rental {
 
     public String statement() {
         return "\t" + movie.title() + "\t" + price();
-    }
-
-    private boolean isBonusFrequentRenterPoints() {
-        return movie.priceCode() == Movie.NEW_RELEASE
-                && daysRented > 1;
     }
 }
