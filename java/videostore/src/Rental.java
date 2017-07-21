@@ -7,15 +7,15 @@ public class Rental {
         this.daysRented = daysRented;
     }
 
-    public int getDaysRented() {
+    public int daysRented() {
         return daysRented;
     }
 
-    public Movie getMovie() {
+    public Movie movie() {
         return movie;
     }
 
-    public int getPoints() {
+    public int points() {
         int frequentRenterPoints = 1;
 
         if (isBonusFrequentRenterPoints())
@@ -23,9 +23,9 @@ public class Rental {
         return frequentRenterPoints;
     }
 
-    public double getPrice() {
+    public double price() {
         double cost = 0;
-        switch (getMovie().getPriceCode()) {
+        switch (movie().getPriceCode()) {
             case Movie.REGULAR:
                 cost = getRegularRentalAmount();
                 break;
@@ -39,31 +39,31 @@ public class Rental {
         return cost;
     }
 
-    public String getStatement() {
-        return "\t" + getMovie().getTitle() + "\t"
-                + getPrice() + "\n";
+    public String statement() {
+        return "\t" + movie().getTitle() + "\t"
+                + price();
     }
 
     private boolean isBonusFrequentRenterPoints() {
-        return getMovie().getPriceCode() == Movie.NEW_RELEASE
-                && getDaysRented() > 1;
+        return movie().getPriceCode() == Movie.NEW_RELEASE
+                && daysRented() > 1;
     }
 
     private double getChildrensRentalAmount() {
         double rentalAmount = 1.5;
-        if (getDaysRented() > 3)
-            rentalAmount += (getDaysRented() - 3) * 1.5;
+        if (daysRented() > 3)
+            rentalAmount += (daysRented() - 3) * 1.5;
         return rentalAmount;
     }
 
     private double getNewReleaseRentalAmount() {
-        return getDaysRented() * 3;
+        return daysRented() * 3;
     }
 
     private double getRegularRentalAmount() {
         double rentalAmount = 2;
-        if (getDaysRented() > 2)
-            rentalAmount += (getDaysRented() - 2) * 1.5;
+        if (daysRented() > 2)
+            rentalAmount += (daysRented() - 2) * 1.5;
         return rentalAmount;
     }
 }

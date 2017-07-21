@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class RentalRecord {
     private final String name;
@@ -14,21 +15,30 @@ public class RentalRecord {
     }
 
     public String statement() {
-        double totalPrice = 0;
-        int totalPoints = 0;
-        String statement = "Rental Record for " + name + "\n";
-
-        for (Rental rental : rentals) {
-            totalPoints += rental.getPoints();
-            totalPrice += rental.getPrice();
-            statement += rental.getStatement();
-
-        }
-
-        statement += "You owed " + totalPrice + "\n";
-        statement += "You earned " + totalPoints + " frequent renter points\n";
-
-        return statement;
+        return "Rental Record for " + name + "\n" +
+                rentalStatements() + "\n" +
+                "You owed " + totalPrice() + "\n" +
+                "You earned " + totalPoints() + " frequent renter points\n";
     }
 
+    private String rentalStatements() {
+        return rentals
+                .stream()
+                .map(Rental::statement)
+                .collect(Collectors.joining("\n"));
+    }
+
+    private double totalPrice() {
+        return rentals
+                .stream()
+                .mapToDouble(Rental::price)
+                .sum();
+    }
+
+    private int totalPoints() {
+        return rentals
+                .stream()
+                .mapToInt(Rental::points)
+                .sum();
+    }
 }
