@@ -41,13 +41,13 @@ public class Customer {
             totalFrequentRenterPoints += getFrequentRenterPoints(rental);
 
             result += "\t" + rental.getMovie().getTitle() + "\t"
-                    + String.valueOf(rentalAmount) + "\n";
+                    + rentalAmount + "\n";
             totalAmount += rentalAmount;
 
         }
 
-        result += "You owed " + String.valueOf(totalAmount) + "\n";
-        result += "You earned " + String.valueOf(totalFrequentRenterPoints) + " frequent renter points\n";
+        result += "You owed " + totalAmount + "\n";
+        result += "You earned " + totalFrequentRenterPoints + " frequent renter points\n";
 
 
         return result;
