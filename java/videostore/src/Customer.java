@@ -2,6 +2,9 @@ import java.util.Vector;
 import java.util.Enumeration;
 
 public class Customer {
+    private String name;
+    private Vector rentals = new Vector();
+
     public Customer(String name) {
         this.name = name;
     }
@@ -13,6 +16,7 @@ public class Customer {
     public String getName() {
         return name;
     }
+
 
     public String statement() {
         double totalAmount = 0;
@@ -59,8 +63,4 @@ public class Customer {
 
         return result;
     }
-
-
-    private String name;
-    private Vector rentals = new Vector();
 }
