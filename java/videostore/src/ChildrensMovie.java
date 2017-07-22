@@ -1,18 +1,19 @@
 public class ChildrensMovie extends Movie {
+
+    private static final double BASE_PRICE = 1.5;
+
     public ChildrensMovie(String title, int priceCode) {
         super(title, priceCode);
     }
 
     @Override
     public double price(int daysRented) {
-        return 1.5 + supplement(daysRented);
+        return BASE_PRICE + supplement(daysRented);
     }
 
     private double supplement(int daysRented) {
-        double rentalAmount = 0;
-        if (daysRented > 3) {
-            rentalAmount += (daysRented - 3) * 1.5;
-        }
-        return rentalAmount;
+        return daysRented > 3
+                ? (daysRented - 3) * BASE_PRICE
+                : 0;
     }
 }
