@@ -1,6 +1,6 @@
 public class NewRelease extends Movie {
-    public NewRelease(String title, int priceCode) {
-        super(title, priceCode);
+    public NewRelease(String title) {
+        super(title, 3);
     }
 
     @Override
@@ -10,6 +10,6 @@ public class NewRelease extends Movie {
 
     @Override
     public double price(int daysRented) {
-        return daysRented * 3;
+        return daysRented * basePrice;
     }
 }
