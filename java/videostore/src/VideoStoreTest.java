@@ -27,7 +27,7 @@ public class VideoStoreTest extends TestCase
 
 	public void testNewReleaseStatement() {
 		rentalRecord.addRental(new Rental(newRelease1, 3));
-		
+
 		assertEquals("Rental Record for Customer\n" +
 				"\tNew Release 1\t9.0\n" +
 				"You owed 9.0\n" +
